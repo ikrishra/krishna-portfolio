@@ -1,4 +1,4 @@
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
   
   // Set CORS headers
@@ -11,6 +11,20 @@ export async function onRequestPost(context) {
   // Handle preflight request
   if (request.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Only allow POST requests
+  if (request.method !== 'POST') {
+    return new Response(
+      JSON.stringify({ error: 'Method not allowed' }),
+      { 
+        status: 405, 
+        headers: { 
+          'Content-Type': 'application/json',
+          ...corsHeaders 
+        } 
+      }
+    );
   }
 
   try {
