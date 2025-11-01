@@ -27,48 +27,13 @@ const ContactForm = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters';
-    }
-
-    // Email validation
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-
-    // Subject validation
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    } else if (formData.subject.trim().length < 5) {
-      newErrors.subject = 'Subject must be at least 5 characters';
-    }
-
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-
+    
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
@@ -76,6 +41,31 @@ const ContactForm = () => {
         [name]: undefined
       }));
     }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -94,29 +84,19 @@ const ContactForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
+      if (response.ok) {
         setSubmitStatus('success');
-        setSubmitMessage(result.message || 'Thank you for your message! I\'ll get back to you soon.');
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
+        setSubmitMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        throw new Error(result.error || 'Something went wrong');
+        throw new Error('Failed to send message');
       }
     } catch (error) {
-      console.error('Contact form error:', error);
       setSubmitStatus('error');
-      setSubmitMessage(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+      setSubmitMessage('Sorry, there was an error sending your message. Please try again or email me directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -124,11 +104,11 @@ const ContactForm = () => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white border-black border-2 rounded-md hover:shadow-brutal p-6 sm:p-8">
+      <div className="bg-white border-black border-2 rounded-md shadow-brutal p-6 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-lg font-bold hero-font text-black mb-3">
+            <label htmlFor="name" className="block text-sm font-bold text-black mb-2 hero-font">
               Name *
             </label>
             <input
@@ -137,22 +117,19 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 ${
-                errors.name 
-                  ? 'bg-red-200 focus:bg-red-100' 
-                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
-              } focus:outline-none focus:shadow-brutal`}
+              className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
+                errors.name ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
+              }`}
               placeholder="Your full name"
-              disabled={isSubmitting}
             />
             {errors.name && (
-              <p className="mt-2 text-sm font-bold text-red-600">{errors.name}</p>
+              <p className="mt-2 text-sm text-red-600 font-medium">{errors.name}</p>
             )}
           </div>
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-lg font-bold hero-font text-black mb-3">
+            <label htmlFor="email" className="block text-sm font-bold text-black mb-2 hero-font">
               Email *
             </label>
             <input
@@ -161,22 +138,19 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 ${
-                errors.email 
-                  ? 'bg-red-200 focus:bg-red-100' 
-                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
-              } focus:outline-none focus:shadow-brutal`}
+              className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
+                errors.email ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
+              }`}
               placeholder="your.email@example.com"
-              disabled={isSubmitting}
             />
             {errors.email && (
-              <p className="mt-2 text-sm font-bold text-red-600">{errors.email}</p>
+              <p className="mt-2 text-sm text-red-600 font-medium">{errors.email}</p>
             )}
           </div>
 
           {/* Subject Field */}
           <div>
-            <label htmlFor="subject" className="block text-lg font-bold hero-font text-black mb-3">
+            <label htmlFor="subject" className="block text-sm font-bold text-black mb-2 hero-font">
               Subject *
             </label>
             <input
@@ -185,22 +159,19 @@ const ContactForm = () => {
               name="subject"
               value={formData.subject}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 ${
-                errors.subject 
-                  ? 'bg-red-200 focus:bg-red-100' 
-                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
-              } focus:outline-none focus:shadow-brutal`}
+              className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
+                errors.subject ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
+              }`}
               placeholder="What's this about?"
-              disabled={isSubmitting}
             />
             {errors.subject && (
-              <p className="mt-2 text-sm font-bold text-red-600">{errors.subject}</p>
+              <p className="mt-2 text-sm text-red-600 font-medium">{errors.subject}</p>
             )}
           </div>
 
           {/* Message Field */}
           <div>
-            <label htmlFor="message" className="block text-lg font-bold hero-font text-black mb-3">
+            <label htmlFor="message" className="block text-sm font-bold text-black mb-2 hero-font">
               Message *
             </label>
             <textarea
@@ -209,20 +180,17 @@ const ContactForm = () => {
               rows={6}
               value={formData.message}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 resize-none ${
-                errors.message 
-                  ? 'bg-red-200 focus:bg-red-100' 
-                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
-              } focus:outline-none focus:shadow-brutal`}
+              className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 resize-none ${
+                errors.message ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
+              }`}
               placeholder="Tell me about your project, idea, or just say hello!"
-              disabled={isSubmitting}
             />
             {errors.message && (
-              <p className="mt-2 text-sm font-bold text-red-600">{errors.message}</p>
+              <p className="mt-2 text-sm text-red-600 font-medium">{errors.message}</p>
             )}
           </div>
 
-          {/* Submit Status Messages */}
+          {/* Success Message */}
           {submitStatus === 'success' && (
             <div className="p-4 bg-lime-200 border-2 border-black rounded-md shadow-brutal">
               <div className="flex items-center">
@@ -234,6 +202,7 @@ const ContactForm = () => {
             </div>
           )}
 
+          {/* Error Message */}
           {submitStatus === 'error' && (
             <div className="p-4 bg-red-200 border-2 border-black rounded-md shadow-brutal">
               <div className="flex items-center">
@@ -250,23 +219,13 @@ const ContactForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`px-6 py-4 text-lg border-black border-2 font-bold transition-all duration-200 cursor-pointer inline-block text-center rounded-md ${
+              className={`px-6 py-4 text-lg font-bold border-2 border-black rounded-md transition-all duration-200 cursor-pointer inline-block text-center ${
                 isSubmitting
                   ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
                   : 'bg-violet-200 hover:bg-violet-300 active:bg-violet-400 hover:shadow-brutal'
               }`}
             >
-              {isSubmitting ? (
-                <div className="flex items-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Sending...
-                </div>
-              ) : (
-                'Send Message'
-              )}
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </form>
