@@ -37,8 +37,8 @@ const ContactForm = () => {
     try {
       // Use absolute URL for production, relative for development
       const apiUrl = window.location.hostname === 'localhost' 
-        ? '/functions/send-email' 
-        : 'https://krishra.com/functions/send-email';
+        ? '/functions/contact' 
+        : 'https://krishra.com/functions/contact';
         
       const response = await fetch(apiUrl, {
         method: 'POST',
