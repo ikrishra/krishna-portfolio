@@ -89,7 +89,7 @@ const ContactForm = () => {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://contact.krishra.com/', {
+      const response = await fetch('https://krishra-contact-form.boltscraper.workers.dev/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
