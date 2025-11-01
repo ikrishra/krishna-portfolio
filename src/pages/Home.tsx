@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
+import ContactForm from '../components/ContactForm'
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false)
   const imageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -123,7 +125,7 @@ const Home = () => {
                 size="lg"
                 rounded="md"
                 onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsContactFormOpen(true)
                 }}
               />
              
@@ -391,6 +393,12 @@ const Home = () => {
           </h1>
         </div>
       </footer>
+
+      {/* Contact Form Modal */}
+      <ContactForm 
+        isOpen={isContactFormOpen} 
+        onClose={() => setIsContactFormOpen(false)} 
+      />
     </div>
   )
 }
