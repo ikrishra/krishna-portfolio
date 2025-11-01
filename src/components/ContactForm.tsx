@@ -35,89 +35,23 @@ const ContactForm = () => {
     setErrorMessage('')
 
     try {
-      // Send email to ikrishra@gmail.com
-      const adminEmailResponse = await fetch('https://api.maildiver.com/v1/email/send', {
+      const response = await fetch('/functions/send-email', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer v1_SN4M5tmp14jTFKQkO6PYPTFiT0KFj2hqtuL7zEvo',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          from: 'noreply@mail.krishra.com',
-          to: 'ikrishra@gmail.com',
-          subject: `New Contact Form Submission: ${formData.subject}`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-                New Contact Form Submission
-              </h2>
-              <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <p><strong>Name:</strong> ${formData.name}</p>
-                <p><strong>Email:</strong> ${formData.email}</p>
-                <p><strong>Subject:</strong> ${formData.subject}</p>
-              </div>
-              <div style="background-color: #fff; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px;">
-                <h3 style="color: #495057; margin-top: 0;">Message:</h3>
-                <p style="line-height: 1.6; color: #6c757d;">${formData.message.replace(/\n/g, '<br>')}</p>
-              </div>
-              <div style="margin-top: 20px; padding: 15px; background-color: #e7f3ff; border-radius: 8px;">
-                <p style="margin: 0; font-size: 14px; color: #0066cc;">
-                  <strong>Reply to:</strong> ${formData.email}
-                </p>
-              </div>
-            </div>
-          `,
-          reply_to: formData.email
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
         })
       })
 
-      if (!adminEmailResponse.ok) {
-        throw new Error('Failed to send admin notification')
-      }
+      const result = await response.json()
 
-      // Send confirmation email to user
-      const userEmailResponse = await fetch('https://api.maildiver.com/v1/email/send', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer v1_SN4M5tmp14jTFKQkO6PYPTFiT0KFj2hqtuL7zEvo',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          from: 'Krishna Rathore <noreply@mail.krishra.com>',
-          to: formData.email,
-          subject: 'Thank you for contacting me!',
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h2 style="color: #333; border-bottom: 2px solid #28a745; padding-bottom: 10px;">
-                Thank You for Reaching Out!
-              </h2>
-              <p style="font-size: 16px; line-height: 1.6; color: #495057;">
-                Hi ${formData.name},
-              </p>
-              <p style="font-size: 16px; line-height: 1.6; color: #495057;">
-                Thank you for contacting me through my portfolio website. I've received your message about "<strong>${formData.subject}</strong>" and I'll get back to you as soon as possible.
-              </p>
-              <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <h3 style="color: #495057; margin-top: 0;">Your Message:</h3>
-                <p style="line-height: 1.6; color: #6c757d; font-style: italic;">"${formData.message}"</p>
-              </div>
-              <p style="font-size: 16px; line-height: 1.6; color: #495057;">
-                I typically respond within 24-48 hours. In the meantime, feel free to check out my other projects and connect with me on social media.
-              </p>
-              <div style="margin-top: 30px; padding: 20px; background-color: #e7f3ff; border-radius: 8px;">
-                <p style="margin: 0; font-size: 14px; color: #0066cc;">
-                  <strong>Best regards,</strong><br>
-                  Krishna Rathore<br>
-                  <a href="mailto:ikrishra@gmail.com" style="color: #0066cc;">ikrishra@gmail.com</a>
-                </p>
-              </div>
-            </div>
-          `
-        })
-      })
-
-      if (!userEmailResponse.ok) {
-        console.warn('Failed to send user confirmation email')
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message')
       }
 
       setSubmitStatus('success')
