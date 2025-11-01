@@ -385,13 +385,13 @@ const Home = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contact-form" className="bg-white dark:bg-gray-900 w-full py-12 sm:py-20 px-4 sm:px-5 md:px-20">
+      <section id="contact-form" className="bg-lime-100 w-full py-12 sm:py-20 px-4 sm:px-5 md:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold hero-font mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold hero-font mb-4 text-black">
               Send Me a Message
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-800 max-w-3xl mx-auto">
               Have a project in mind? Want to collaborate? Or just want to say hello? 
               I'd love to hear from you! Fill out the form below and I'll get back to you as soon as possible.
             </p>
@@ -400,11 +400,11 @@ const Home = () => {
           <ContactForm />
           
           <div className="mt-12 text-center">
-            <p className="text-gray-500 dark:text-gray-400 text-sm">
+            <p className="text-gray-700 text-sm">
               Prefer email? You can also reach me directly at{' '}
               <a 
                 href="mailto:ikrishra@gmail.com" 
-                className="text-violet-600 dark:text-violet-400 hover:underline font-medium"
+                className="text-violet-600 hover:underline font-medium"
               >
                 ikrishra@gmail.com
               </a>
