@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
 
@@ -31,12 +31,12 @@ const Home = () => {
 
   useEffect(() => {
     // Scroll detection
-    let scrollTimeout: NodeJS.Timeout
+    let scrollTimeout: number
     
     const handleScroll = () => {
       setIsScrolling(true)
       clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(() => {
+      scrollTimeout = window.setTimeout(() => {
         setIsScrolling(false)
       }, 150)
     }
@@ -265,11 +265,11 @@ const Home = () => {
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 hero-font">Email</h3>
               <Button
-                buttonText="hi@krishra.com"
+                buttonText="ikrishra@gmail.com"
                 color="cyan"
                 size="md"
                 rounded="md"
-                href="mailto:hi@krishra.com"
+                href="mailto:ikrishra@gmail.com"
                 className="w-full"
               />
             </Card>
