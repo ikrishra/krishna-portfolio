@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
-import ContactForm from '../components/ContactForm'
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -124,7 +123,7 @@ const Home = () => {
                 size="lg"
                 rounded="md"
                 onClick={() => {
-                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               />
              
@@ -381,13 +380,6 @@ const Home = () => {
               />
             </Card>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section id="contact-form" className="bg-cyan-200 w-full py-12 sm:py-20 px-4 sm:px-5 md:px-20">
-        <div className="max-w-6xl mx-auto">
-          <ContactForm />
         </div>
       </section>
 
