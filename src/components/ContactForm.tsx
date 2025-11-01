@@ -123,13 +123,12 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name and Email Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="max-w-2xl mx-auto">
+      <div className="bg-white border-black border-2 rounded-md hover:shadow-brutal p-6 sm:p-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="name" className="block text-lg font-bold hero-font text-black mb-3">
               Name *
             </label>
             <input
@@ -138,22 +137,22 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-colors ${
+              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 ${
                 errors.name 
-                  ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                  : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'
-              } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
+                  ? 'bg-red-200 focus:bg-red-100' 
+                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
+              } focus:outline-none focus:shadow-brutal`}
               placeholder="Your full name"
               disabled={isSubmitting}
             />
             {errors.name && (
-              <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
+              <p className="mt-2 text-sm font-bold text-red-600">{errors.name}</p>
             )}
           </div>
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="email" className="block text-lg font-bold hero-font text-black mb-3">
               Email *
             </label>
             <input
@@ -162,116 +161,116 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-colors ${
+              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 ${
                 errors.email 
-                  ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                  : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'
-              } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
+                  ? 'bg-red-200 focus:bg-red-100' 
+                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
+              } focus:outline-none focus:shadow-brutal`}
               placeholder="your.email@example.com"
               disabled={isSubmitting}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
+              <p className="mt-2 text-sm font-bold text-red-600">{errors.email}</p>
             )}
           </div>
-        </div>
 
-        {/* Subject Field */}
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Subject *
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleInputChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-colors ${
-              errors.subject 
-                ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'
-            } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
-            placeholder="What's this about?"
-            disabled={isSubmitting}
-          />
-          {errors.subject && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.subject}</p>
-          )}
-        </div>
-
-        {/* Message Field */}
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Message *
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={6}
-            value={formData.message}
-            onChange={handleInputChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-colors resize-vertical ${
-              errors.message 
-                ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'
-            } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
-            placeholder="Tell me about your project, question, or just say hello!"
-            disabled={isSubmitting}
-          />
-          {errors.message && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
-          )}
-        </div>
-
-        {/* Submit Status Messages */}
-        {submitStatus === 'success' && (
-          <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-            <div className="flex items-center">
-              <svg className="w-5 h-5 text-green-600 dark:text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <p className="text-green-800 dark:text-green-200">{submitMessage}</p>
-            </div>
+          {/* Subject Field */}
+          <div>
+            <label htmlFor="subject" className="block text-lg font-bold hero-font text-black mb-3">
+              Subject *
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 ${
+                errors.subject 
+                  ? 'bg-red-200 focus:bg-red-100' 
+                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
+              } focus:outline-none focus:shadow-brutal`}
+              placeholder="What's this about?"
+              disabled={isSubmitting}
+            />
+            {errors.subject && (
+              <p className="mt-2 text-sm font-bold text-red-600">{errors.subject}</p>
+            )}
           </div>
-        )}
 
-        {submitStatus === 'error' && (
-          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-            <div className="flex items-center">
-              <svg className="w-5 h-5 text-red-600 dark:text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-              </svg>
-              <p className="text-red-800 dark:text-red-200">{submitMessage}</p>
-            </div>
+          {/* Message Field */}
+          <div>
+            <label htmlFor="message" className="block text-lg font-bold hero-font text-black mb-3">
+              Message *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              value={formData.message}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-3 border-2 border-black rounded-md font-medium transition-all duration-200 resize-none ${
+                errors.message 
+                  ? 'bg-red-200 focus:bg-red-100' 
+                  : 'bg-white focus:bg-cyan-100 hover:bg-gray-50'
+              } focus:outline-none focus:shadow-brutal`}
+              placeholder="Tell me about your project, idea, or just say hello!"
+              disabled={isSubmitting}
+            />
+            {errors.message && (
+              <p className="mt-2 text-sm font-bold text-red-600">{errors.message}</p>
+            )}
           </div>
-        )}
 
-        {/* Submit Button */}
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`px-8 py-3 min-w-[160px] flex items-center justify-center border-black border-2 font-bold transition-all duration-200 cursor-pointer text-center rounded-md ${
-              isSubmitting 
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                : 'bg-violet-200 hover:bg-violet-300 active:bg-violet-400 text-black'
-            }`}
-          >
-            {isSubmitting ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          {/* Submit Status Messages */}
+          {submitStatus === 'success' && (
+            <div className="p-4 bg-lime-200 border-2 border-black rounded-md shadow-brutal">
+              <div className="flex items-center">
+                <svg className="w-6 h-6 text-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                Sending...
-              </>
-            ) : (
-              'Send Message'
-            )}
-          </button>
-        </div>
-      </form>
+                <p className="text-black font-bold">{submitMessage}</p>
+              </div>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className="p-4 bg-red-200 border-2 border-black rounded-md shadow-brutal">
+              <div className="flex items-center">
+                <svg className="w-6 h-6 text-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+                <p className="text-black font-bold">{submitMessage}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <div className="flex justify-center pt-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`px-6 py-4 text-lg border-black border-2 font-bold transition-all duration-200 cursor-pointer inline-block text-center rounded-md ${
+                isSubmitting
+                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  : 'bg-violet-200 hover:bg-violet-300 active:bg-violet-400 hover:shadow-brutal'
+              }`}
+            >
+              {isSubmitting ? (
+                <div className="flex items-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </div>
+              ) : (
+                'Send Message'
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
