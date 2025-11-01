@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
+import ContactForm from '../components/ContactForm'
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -123,7 +124,7 @@ const Home = () => {
                 size="lg"
                 rounded="md"
                 onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               />
              
@@ -378,6 +379,20 @@ const Home = () => {
                 href="mailto:hi@krishra.com"
                 className="w-full"
               />
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact-form" className="bg-cyan-200 w-full py-12 sm:py-20 px-4 sm:px-5 md:px-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold hero-font mb-8 sm:mb-12 text-center">
+            Send Me a Message
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <Card color="white" className="p-6 sm:p-8">
+              <ContactForm />
             </Card>
           </div>
         </div>
