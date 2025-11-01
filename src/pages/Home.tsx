@@ -8,7 +8,6 @@ const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false)
   const imageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -125,7 +124,7 @@ const Home = () => {
                 size="lg"
                 rounded="md"
                 onClick={() => {
-                  setIsContactFormOpen(true)
+                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               />
              
@@ -385,6 +384,13 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Contact Form Section */}
+      <section id="contact-form" className="bg-cyan-200 w-full py-12 sm:py-20 px-4 sm:px-5 md:px-20">
+        <div className="max-w-6xl mx-auto">
+          <ContactForm />
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black text-white py-6 sm:py-8 px-2 sm:px-4">
         <div className="w-full text-center">
@@ -393,12 +399,6 @@ const Home = () => {
           </h1>
         </div>
       </footer>
-
-      {/* Contact Form Modal */}
-      <ContactForm 
-        isOpen={isContactFormOpen} 
-        onClose={() => setIsContactFormOpen(false)} 
-      />
     </div>
   )
 }
