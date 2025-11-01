@@ -1,4 +1,15 @@
-export async function onRequest(context) {
+// Handle OPTIONS requests for CORS preflight
+export async function onRequestOptions(context) {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+  });
+}
+
+export async function onRequestPost(context) {
   const { request, env } = context;
   
   // Set CORS headers
@@ -7,25 +18,6 @@ export async function onRequest(context) {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
-
-  // Handle preflight request
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
-
-  // Only allow POST requests
-  if (request.method !== 'POST') {
-    return new Response(
-      JSON.stringify({ error: 'Method not allowed' }),
-      { 
-        status: 405, 
-        headers: { 
-          'Content-Type': 'application/json',
-          ...corsHeaders 
-        } 
-      }
-    );
-  }
 
   try {
     const { name, email, subject, message } = await request.json();
