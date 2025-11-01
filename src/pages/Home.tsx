@@ -9,6 +9,16 @@ const Home = () => {
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const imageRef = useRef<HTMLDivElement>(null)
+  const [currentTextIndex, setCurrentTextIndex] = useState(0)
+  
+  const cyclingTexts = [
+    "Let's Do It",
+    "Build Together",
+    "Create Magic",
+    "Make It Happen",
+    "Dream Big",
+    "Code Dreams"
+  ]
 
   useEffect(() => {
     // Check if device is mobile
@@ -47,6 +57,17 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll)
       clearTimeout(scrollTimeout)
     }
+  }, [])
+
+  useEffect(() => {
+    // Cycling text animation
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prevIndex) => 
+        (prevIndex + 1) % cyclingTexts.length
+      )
+    }, 2000) // Change text every 2 seconds
+
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
@@ -127,7 +148,15 @@ const Home = () => {
                   document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               />
-             
+            </div>
+            
+            {/* Open to ideas text */}
+            <div className={`mt-6 px-4 transition-all duration-700 delay-700 ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
+              <p className="text-lg sm:text-xl text-gray-600 text-center font-medium">
+                💡 Always open to new ideas and exciting collaborations
+              </p>
             </div>
           </div>
         </div>
@@ -416,8 +445,8 @@ const Home = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-6 sm:py-8 px-2 sm:px-4">
         <div className="w-full text-center">
-          <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem] font-black tracking-tight hero-font text-white leading-none">
-            Krishna Rathore:)
+          <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem] font-black tracking-tight hero-font text-white leading-none transition-all duration-500 ease-in-out">
+            {cyclingTexts[currentTextIndex]}
           </h1>
         </div>
       </footer>
