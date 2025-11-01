@@ -386,8 +386,8 @@ const Home = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-6 sm:py-8 px-2 sm:px-4">
         <div className="w-full text-center">
-          <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black tracking-tight hero-font text-white leading-none">
-            Krishna Rathore
+          <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem] font-black tracking-tight hero-font text-white leading-none">
+            Krishna Rathore:)
           </h1>
         </div>
       </footer>
