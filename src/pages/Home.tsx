@@ -171,7 +171,7 @@ const Home = () => {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Bolt Scraper</h3>
               <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                Advanced web scraping tools for B2B lead generation. Extract valuable business leads effortlessly with powerful scraping capabilities for Google Maps, Apollo.io, Facebook, Yellow Pages and more.
+                Advanced web scraping tools for B2B lead generation. Extract valuable business leads effortlessly with powerful scraping capabilities for Google Maps, Apollo.io, Facebook, Yellow Pages.
               </p>
               <Button
                 buttonText="Visit Bolt Scraper"
@@ -248,6 +248,52 @@ const Home = () => {
                 size="md"
                 rounded="md"
                 href="https://chromewebstore.google.com/detail/translidict-instant-word/ogdgpogickedbncjjbildpmjpdlbgfcd?authuser=0&hl=en"
+                className="w-full"
+              />
+            </Card>
+
+            {/* LinkQR Chrome Extension */}
+            <Card color="white" className="overflow-hidden">
+              <div className="mb-4 sm:mb-6 flex justify-center">
+                <img 
+                  src="/images/LinkQR.svg" 
+                  alt="LinkQR" 
+                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">LinkQR</h3>
+              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
+                Generate QR codes & shorten URLs instantly. Share links easily across devices with this privacy-focused Chrome extension featuring instant QR generation, URL shortening, and clean interface.
+              </p>
+              <Button
+                buttonText="Get Extension"
+                color="violet"
+                size="md"
+                rounded="md"
+                href="https://chromewebstore.google.com/detail/linkqr-shorturl-qr-code-g/gnbffmeoppeehbkdeghfagkobdnkodlp?authuser=0&hl=en"
+                className="w-full"
+              />
+            </Card>
+
+            {/* Auto Tab Closer Chrome Extension */}
+            <Card color="white" className="overflow-hidden">
+              <div className="mb-4 sm:mb-6 flex justify-center">
+                <img 
+                  src="/images/autotab.svg" 
+                  alt="Auto Tab Closer" 
+                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Auto Tab Closer</h3>
+              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
+                Your browser's ad tab guardian. Automatically closes unwanted new tabs and popup ads with one-click activation, keeping your browser clean and distraction-free.
+              </p>
+              <Button
+                buttonText="Get Extension"
+                color="lime"
+                size="md"
+                rounded="md"
+                href="https://chromewebstore.google.com/detail/auto-tab-closer/cgllonialmgfoaodebdbilbkfoibjphg"
                 className="w-full"
               />
             </Card>
