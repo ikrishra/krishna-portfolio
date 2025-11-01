@@ -106,46 +106,49 @@ const ContactForm = () => {
     <div className="max-w-2xl mx-auto">
       <div className="bg-white border-black border-2 rounded-md shadow-brutal p-6 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name Field */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-bold text-black mb-2 hero-font">
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
-                errors.name ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
-              }`}
-              placeholder="Your full name"
-            />
-            {errors.name && (
-              <p className="mt-2 text-sm text-red-600 font-medium">{errors.name}</p>
-            )}
-          </div>
+          {/* Name and Email Fields - Side by side on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* Name Field */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-bold text-black mb-2 hero-font">
+                Name *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
+                  errors.name ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
+                }`}
+                placeholder="Your full name"
+              />
+              {errors.name && (
+                <p className="mt-2 text-sm text-red-600 font-medium">{errors.name}</p>
+              )}
+            </div>
 
-          {/* Email Field */}
-          <div>
-            <label htmlFor="email" className="block text-sm font-bold text-black mb-2 hero-font">
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
-                errors.email ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
-              }`}
-              placeholder="your.email@example.com"
-            />
-            {errors.email && (
-              <p className="mt-2 text-sm text-red-600 font-medium">{errors.email}</p>
-            )}
+            {/* Email Field */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-bold text-black mb-2 hero-font">
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className={`w-full px-4 py-3 border-2 border-black rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-black transition-all duration-200 ${
+                  errors.email ? 'border-red-500 bg-red-50' : 'hover:shadow-brutal focus:shadow-brutal'
+                }`}
+                placeholder="your.email@example.com"
+              />
+              {errors.email && (
+                <p className="mt-2 text-sm text-red-600 font-medium">{errors.email}</p>
+              )}
+            </div>
           </div>
 
           {/* Subject Field */}
