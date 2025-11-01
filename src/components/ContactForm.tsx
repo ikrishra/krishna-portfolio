@@ -35,7 +35,12 @@ const ContactForm = () => {
     setErrorMessage('')
 
     try {
-      const response = await fetch('/functions/send-email', {
+      // Use absolute URL for production, relative for development
+      const apiUrl = window.location.hostname === 'localhost' 
+        ? '/functions/send-email' 
+        : 'https://krishra.com/functions/send-email';
+        
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
