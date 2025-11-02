@@ -217,7 +217,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/3.webp" 
+                  src="/images/2.webp" 
                   alt="Bojita" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
@@ -240,7 +240,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/2.webp" 
+                  src="/images/3.webp" 
                   alt="Responsive Viewer" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
