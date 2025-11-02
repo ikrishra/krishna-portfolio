@@ -109,7 +109,7 @@ const Home = () => {
                 }}
               >
                 <img 
-                  src="/images/krishna.png" 
+                  src="/images/krishna.webp" 
                   alt="Krishna Rathore" 
                   className="w-full h-full object-cover"
                 />
@@ -194,7 +194,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6">
                 <img 
-                  src="/images/boltscraper1.svg" 
+                  src="/images/1.webp" 
                   alt="Bolt Scraper" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
@@ -217,7 +217,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/bojita1.svg" 
+                  src="/images/3.webp" 
                   alt="Bojita" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
@@ -240,7 +240,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/Responsive1.svg" 
+                  src="/images/2.webp" 
                   alt="Responsive Viewer" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
@@ -263,7 +263,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/TransliDict1.svg" 
+                  src="/images/4.webp" 
                   alt="TransliDict" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
@@ -286,7 +286,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/LinkQR1.svg" 
+                  src="/images/5.webp" 
                   alt="LinkQR" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
@@ -309,7 +309,7 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/autotab1.svg" 
+                  src="/images/6.webp" 
                   alt="Auto Tab Closer" 
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
