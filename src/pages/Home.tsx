@@ -194,9 +194,9 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6">
                 <img 
-                  src="/images/boltscraper.svg" 
+                  src="/images/boltscraper1.svg" 
                   alt="Bolt Scraper" 
-                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Bolt Scraper</h3>
@@ -217,9 +217,9 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/bojita.svg" 
+                  src="/images/bojita1.svg" 
                   alt="Bojita" 
-                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Bojita</h3>
@@ -240,9 +240,9 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/Responsive.svg" 
+                  src="/images/Responsive1.svg" 
                   alt="Responsive Viewer" 
-                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Responsive Viewer</h3>
@@ -263,9 +263,9 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/TransliDict.svg" 
+                  src="/images/TransliDict1.svg" 
                   alt="TransliDict" 
-                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">TransliDict</h3>
@@ -286,9 +286,9 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/LinkQR.svg" 
+                  src="/images/LinkQR1.svg" 
                   alt="LinkQR" 
-                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">LinkQR</h3>
@@ -309,9 +309,9 @@ const Home = () => {
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
                 <img 
-                  src="/images/autotab.svg" 
+                  src="/images/autotab1.svg" 
                   alt="Auto Tab Closer" 
-                  className="w-full h-40 sm:h-48 object-contain border-4 border-black rounded-lg bg-gray-50"
+                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Auto Tab Closer</h3>
