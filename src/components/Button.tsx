@@ -79,8 +79,9 @@ const Button = ({
   );
 
   if (href) {
+    const isExternal = href.startsWith('http') || href.startsWith('//');
     return (
-      <a href={href} className={baseClasses} target="_blank" rel="noopener noreferrer">
+      <a href={href} className={baseClasses} target={isExternal ? "_blank" : "_self"} rel={isExternal ? "noopener noreferrer" : ""}>
         {buttonText}
       </a>
     );

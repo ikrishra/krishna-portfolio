@@ -328,6 +328,18 @@ const Home = () => {
               />
             </Card>
           </div>
+          
+          {/* More Projects Button */}
+          <div className="text-center mt-8 sm:mt-12">
+            <Button
+              buttonText="More Projects →"
+              color="violet"
+              size="lg"
+              rounded="md"
+              href="/projects"
+              className="inline-block"
+            />
+          </div>
         </div>
       </section>
 
