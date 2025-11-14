@@ -353,11 +353,11 @@ const Home = () => {
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 hero-font">Email</h3>
               <Button
-                buttonText="hi@krishra.com"
+                buttonText="ikrishra@gmail.com"
                 color="cyan"
                 size="md"
                 rounded="md"
-                href="mailto:hi@krishra.com"
+                href="mailto:ikrishra@gmail.com"
                 className="w-full"
               />
             </Card>
@@ -417,7 +417,7 @@ const Home = () => {
                 color="yellow"
                 size="md"
                 rounded="md"
-                href="mailto:hi@krishra.com"
+                href="mailto:ikrishra@gmail.com"
                 className="w-full"
               />
             </Card>
@@ -444,10 +444,10 @@ const Home = () => {
             <p className="text-gray-700 text-sm">
               Prefer email? You can also reach me directly at{' '}
               <a 
-                href="mailto:hi@krishra.com" 
+                href="mailto:ikrishra@gmail.com" 
                 className="text-violet-600 hover:underline font-medium"
               >
-                hi@krishra.com
+                ikrishra@gmail.com
               </a>
             </p>
           </div>
