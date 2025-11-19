@@ -10,7 +10,7 @@ const Home = () => {
   const [isMobile, setIsMobile] = useState(false)
   const imageRef = useRef<HTMLDivElement>(null)
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
-  
+
   const cyclingTexts = [
     "Let's Do It",
     "Build Together",
@@ -25,7 +25,7 @@ const Home = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
-    
+
     checkMobile()
     window.addEventListener('resize', checkMobile)
 
@@ -43,7 +43,7 @@ const Home = () => {
   useEffect(() => {
     // Scroll detection
     let scrollTimeout: number
-    
+
     const handleScroll = () => {
       setIsScrolling(true)
       clearTimeout(scrollTimeout)
@@ -62,7 +62,7 @@ const Home = () => {
   useEffect(() => {
     // Cycling text animation
     const interval = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => 
+      setCurrentTextIndex((prevIndex) =>
         (prevIndex + 1) % cyclingTexts.length
       )
     }, 2000) // Change text every 2 seconds
@@ -86,7 +86,7 @@ const Home = () => {
     if (!isMobile) {
       window.addEventListener('mousemove', handleMouseMove)
     }
-    
+
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [isMobile, isScrolling])
 
@@ -98,39 +98,35 @@ const Home = () => {
           <div className="text-center mb-8 sm:mb-12">
             {/* Profile Image with cursor effect */}
             <div className="mb-6 sm:mb-8 flex justify-center">
-              <div 
+              <div
                 ref={imageRef}
-                className={`w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 border-6 sm:border-8 border-black shadow-brutal bg-white rounded-2xl overflow-hidden transition-all duration-300 ${
-                  isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                }`}
+                className={`w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 border-6 sm:border-8 border-black shadow-brutal bg-white rounded-2xl overflow-hidden transition-all duration-300 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
                 style={{
                   transform: `translate(${isMobile || isScrolling ? 0 : mousePosition.x}px, ${isMobile || isScrolling ? 0 : mousePosition.y}px) scale(${isLoaded ? 1 : 0.95})`,
                   transition: isLoaded ? (isMobile || isScrolling ? 'transform 0.3s ease-out' : 'transform 0.1s ease-out') : 'all 0.5s ease-out'
                 }}
               >
-                <img 
-                  src="/images/krishna.webp" 
-                  alt="Krishna Rathore" 
+                <img
+                  src="/images/krishna.webp"
+                  alt="Krishna Rathore"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
-            <h1 className={`text-4xl sm:text-6xl md:text-8xl font-black tracking-tight hero-font mb-4 sm:mb-6 text-black transition-all duration-700 delay-200 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
+            <h1 className={`text-4xl sm:text-6xl md:text-8xl font-black tracking-tight hero-font mb-4 sm:mb-6 text-black transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
               Krishna Rathore
             </h1>
-            <p className={`text-lg sm:text-2xl md:text-3xl hero-font text-black mb-6 sm:mb-8 px-4 transition-all duration-700 delay-400 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
+            <p className={`text-lg sm:text-2xl md:text-3xl hero-font text-black mb-6 sm:mb-8 px-4 transition-all duration-700 delay-400 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
               Developer & Creator
               <br />
               I build cool stuff :)
             </p>
-            <div className={`flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4 transition-all duration-700 delay-600 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-               <Button
+            <div className={`flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4 transition-all duration-700 delay-600 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+              <Button
                 buttonText="View Projects"
                 color="lime"
                 size="lg"
@@ -149,11 +145,10 @@ const Home = () => {
                 }}
               />
             </div>
-            
+
             {/* Open to ideas text */}
-            <div className={`mt-6 px-4 transition-all duration-700 delay-700 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
+            <div className={`mt-6 px-4 transition-all duration-700 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
               <p className="text-lg sm:text-xl text-gray-600 text-center font-medium">
                 💡 Always open to new ideas and exciting collaborations
               </p>
@@ -193,9 +188,9 @@ const Home = () => {
             {/* Bolt Scraper Project */}
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6">
-                <img 
-                  src="/images/1.webp" 
-                  alt="Bolt Scraper" 
+                <img
+                  src="/images/1.webp"
+                  alt="Bolt Scraper"
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
@@ -216,15 +211,15 @@ const Home = () => {
             {/* Bojita Project */}
             <Card color="white" className="overflow-hidden">
               <div className="mb-4 sm:mb-6 flex justify-center">
-                <img 
-                  src="/images/2.webp" 
-                  alt="Bojita" 
+                <img
+                  src="/images/2.webp"
+                  alt="Bojita"
                   className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
                 />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Bojita</h3>
               <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                Building Bojita - an innovative Mac app that's currently in development. Focused on creating powerful tools for Mac users with a beautiful, native experience.
+                Bojita is a suite of powerfull Chrome extensions designed to boost productivity and enhance browsing. Built with beautiful design, high performance, and privacy‑first principles.
               </p>
               <Button
                 buttonText="Visit Bojita"
@@ -235,109 +230,18 @@ const Home = () => {
                 className="w-full"
               />
             </Card>
-
-            {/* Responsive Viewer Chrome Extension */}
-            <Card color="white" className="overflow-hidden">
-              <div className="mb-4 sm:mb-6 flex justify-center">
-                <img 
-                  src="/images/3.webp" 
-                  alt="Responsive Viewer" 
-                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Responsive Viewer</h3>
-              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                A Chrome extension that helps developers and designers test webpage responsiveness across multiple device sizes with pre-configured presets and custom dimensions.
-              </p>
-              <Button
-                buttonText="Get Extension"
-                color="violet"
-                size="md"
-                rounded="md"
-                href="https://chromewebstore.google.com/detail/responsive-viewer/idkjhjlkhcoagockknjpbkkakbcegifk"
-                className="w-full"
-              />
-            </Card>
-
-            {/* TransliDict Chrome Extension */}
-            <Card color="white" className="overflow-hidden">
-              <div className="mb-4 sm:mb-6 flex justify-center">
-                <img 
-                  src="/images/4.webp" 
-                  alt="TransliDict" 
-                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">TransliDict</h3>
-              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                Instant word lookup and translation Chrome extension with multi-language support, transliteration detection, and native script display for 100+ languages.
-              </p>
-              <Button
-                buttonText="Get Extension"
-                color="orange"
-                size="md"
-                rounded="md"
-                href="https://chromewebstore.google.com/detail/translidict-instant-word/ogdgpogickedbncjjbildpmjpdlbgfcd?authuser=0&hl=en"
-                className="w-full"
-              />
-            </Card>
-
-            {/* LinkQR Chrome Extension */}
-            <Card color="white" className="overflow-hidden">
-              <div className="mb-4 sm:mb-6 flex justify-center">
-                <img 
-                  src="/images/5.webp" 
-                  alt="LinkQR" 
-                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">LinkQR</h3>
-              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                Generate QR codes & shorten URLs instantly. Share links easily across devices with this privacy-focused Chrome extension featuring instant QR generation, URL shortening, and clean interface.
-              </p>
-              <Button
-                buttonText="Get Extension"
-                color="violet"
-                size="md"
-                rounded="md"
-                href="https://chromewebstore.google.com/detail/linkqr-shorturl-qr-code-g/gnbffmeoppeehbkdeghfagkobdnkodlp?authuser=0&hl=en"
-                className="w-full"
-              />
-            </Card>
-
-            {/* Auto Tab Closer Chrome Extension */}
-            <Card color="white" className="overflow-hidden">
-              <div className="mb-4 sm:mb-6 flex justify-center">
-                <img 
-                  src="/images/6.webp" 
-                  alt="Auto Tab Closer" 
-                  className="w-full h-50 sm:h-58 object-contain border-4 border-black rounded-lg bg-gray-50"
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold hero-font mb-3 sm:mb-4">Auto Tab Closer</h3>
-              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                Your browser's ad tab guardian. Automatically closes unwanted new tabs and popup ads with one-click activation, keeping your browser clean and distraction-free.
-              </p>
-              <Button
-                buttonText="Get Extension"
-                color="lime"
-                size="md"
-                rounded="md"
-                href="https://chromewebstore.google.com/detail/auto-tab-closer/cgllonialmgfoaodebdbilbkfoibjphg"
-                className="w-full"
-              />
-            </Card>
           </div>
-          
+
           {/* More Projects Button */}
           <div className="text-center mt-8 sm:mt-12">
             <Button
-              buttonText="More Projects →"
+              buttonText="Let's build more"
               color="violet"
               size="lg"
               rounded="md"
-              href="/projects"
-              className="inline-block"
+              onClick={() => {
+                document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             />
           </div>
         </div>
@@ -361,7 +265,7 @@ const Home = () => {
                 className="w-full"
               />
             </Card>
-            
+
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 hero-font">Instagram</h3>
               <Button
@@ -373,7 +277,7 @@ const Home = () => {
                 className="w-full"
               />
             </Card>
-            
+
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 hero-font">X (Twitter)</h3>
               <Button
@@ -385,7 +289,7 @@ const Home = () => {
                 className="w-full"
               />
             </Card>
-            
+
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-2 hero-font">YouTube</h3>
               <Button
@@ -397,7 +301,7 @@ const Home = () => {
                 className="w-full"
               />
             </Card>
-            
+
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 hero-font">LinkedIn</h3>
               <Button
@@ -409,7 +313,7 @@ const Home = () => {
                 className="w-full"
               />
             </Card>
-            
+
             <Card color="white" className="text-center">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 hero-font">Get in Touch</h3>
               <Button
@@ -433,18 +337,18 @@ const Home = () => {
               Send Me a Message
             </h2>
             <p className="text-lg sm:text-xl text-gray-800 max-w-3xl mx-auto">
-              Have a project in mind? Want to collaborate? Or just want to say hello? 
+              Have a project in mind? Want to collaborate? Or just want to say hello?
               I'd love to hear from you! Fill out the form below and I'll get back to you as soon as possible.
             </p>
           </div>
-          
+
           <ContactForm />
-          
+
           <div className="mt-12 text-center">
             <p className="text-gray-700 text-sm">
               Prefer email? You can also reach me directly at{' '}
-              <a 
-                href="mailto:ikrishra@gmail.com" 
+              <a
+                href="mailto:ikrishra@gmail.com"
                 className="text-violet-600 hover:underline font-medium"
               >
                 ikrishra@gmail.com
